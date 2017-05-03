@@ -12,7 +12,7 @@ import { View,
    InteractionManager
  } from 'react-native';
 import * as firebase from 'firebase';
-import { Icon } from 'react-native-elements'
+import { Icon, Button } from 'react-native-elements'
 const window= Dimensions.get('window');
 var srcimg='';
 import NavJs from './nav.js'
@@ -133,8 +133,23 @@ export default class LOGIN extends Component {
     )
 
   }
+  _navigatebefore=()=>{
+    this.props.navigator.pop();
+  }
 
   render() {
+    var nametarget;
+    for(var i=0; i<this.state.allaccount.length;i++){
+      if(this.props.targetUser==this.state.allaccount[i].username){
+        nametarget=this.state.allaccount[i].fullname
+      }
+    }
+    // var nametarget = this.state.allaccount.map((name,i)=>{
+    //   if(this.props.targetUser==name.username){
+    //     return name.fullname;
+    //   }
+    // })
+    console.log(nametarget);
     if(this.state.renderPlaceholderOnly==true) return(
       <View style={{flex:1,backgroundColor:'white'}}>
 
@@ -149,6 +164,19 @@ export default class LOGIN extends Component {
     }
     return (
       <View style={styles.container}>
+      <View style={styles.topnav}>
+          <Button
+              raised
+              icon={{name: 'navigate-before', color: '#000'}}
+              buttonStyle= {styles.navigatebefore}
+              textStyle={styles.textnavigate}
+              onPress={this._navigatebefore.bind(this)}
+              underlayColor='#fff'
+              color='#000'
+              title='Home' />
+          <Text style={styles.nametarget}>{nametarget}</Text>
+          <Text style={styles.nametarget}></Text>
+      </View>
       <FlatList
         data={this.state.messages}
         renderItem={this._renderItem}
@@ -182,6 +210,25 @@ const styles=StyleSheet.create({
   },
   listchat:{
     flex:0.92,
+  },
+  nametarget:{
+    width:window.width*0.5,
+    textAlign:'center',
+    color:'#0084ff'
+  },
+  topnav:{
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'space-between'
+  },
+  navigatebefore:{
+    width: window.width*0.2,
+    backgroundColor:'white',
+    marginLeft:0,
+    shadowColor: '#fff'
+  },
+  textnavigate:{
+    color:'#000'
   },
   chat:{
     alignItems:'center',

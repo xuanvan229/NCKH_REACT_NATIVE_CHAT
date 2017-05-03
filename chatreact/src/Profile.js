@@ -8,11 +8,12 @@ import { View,
   Dimensions,
   TextInput,
   InteractionManager
-
-
  } from 'react-native';
- import { Icon } from 'react-native-elements'
+ import Info from './Info'
+ import Organization from './Organization'
 
+ import { Icon } from 'react-native-elements'
+ import ScrollableTabView, {DefaultTabBar} from 'react-native-scrollable-tab-view'
 import * as firebase from 'firebase';
 const window= Dimensions.get('window');
 var acc=[];
@@ -100,6 +101,14 @@ export default class Profile extends Component {
                             {acc.fullname}
                         </Text>
                         </View>
+                        <ScrollableTabView
+                        renderTabBar={()=><DefaultTabBar backgroundColor='rgba(0,0,0,0)'
+                        tabBarPosition='overlayTop'
+                        />}
+                        >
+                            <Info tabLabel="Info" targetUser={this.props.username} />
+                            <Organization tabLabel="Organization" targetUser={this.props.username} tabBarUnderlineStyle={styles.tablabel}/>
+                        </ScrollableTabView>
               </View>
           <NavJs navigator={this.props.navigator} username={this.props.username} id={5}/>
       </Image>
@@ -119,6 +128,9 @@ const styles= StyleSheet.create({
   navbar:{
     flexDirection:'row',
     height:window.height*0.07,
+  },
+  tablabel:{
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   home:{
     width:window.width*0.5,
@@ -141,7 +153,7 @@ const styles= StyleSheet.create({
   name:{
     fontSize:40,
     color:"#fff",
-    top:window.height*0.1,
+    paddingTop:window.height*0.1,
     backgroundColor: 'rgba(0,0,0,0)',
   },
   centeruser:{

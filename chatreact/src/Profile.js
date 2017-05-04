@@ -82,7 +82,7 @@ export default class Profile extends Component {
     // console.log(acc);
     return(
       <Image style={styles.background}
-      source={require('./back.jpg')}>
+      source={require('./bg.jpg')}>
               <View style={styles.topprofile}>
                   <View style={styles.header}>
                       <TouchableHighlight onPress={this._onPress.bind(this)}>
@@ -102,8 +102,10 @@ export default class Profile extends Component {
                         </Text>
                         </View>
                         <ScrollableTabView
+                        tabBarUnderlineStyle={{ backgroundColor: '#E8175D'}}
                         renderTabBar={()=><DefaultTabBar backgroundColor='rgba(0,0,0,0)'
                         tabBarPosition='overlayTop'
+                        activeTextColor="white" inactiveTextColor="rgba(255,255,255,0.8)"
                         />}
                         >
                             <Info tabLabel="Info" targetUser={this.props.username} />

@@ -90,7 +90,7 @@ export default class Signup extends Component{
   render(){
     return(
           <Image style={styles.background}
-          source={require('./back.jpg')} >
+          source={require('./bg.jpg')} >
 
             <View style={styles.input}>
               <TextInput style={styles.username}
@@ -171,7 +171,7 @@ const styles= StyleSheet.create({
   loginbutton:{
     width: window.width*0.8,
     height: window.height*0.1,
-    backgroundColor:'#33ff99',
+    backgroundColor:'#E8175D',
     borderRadius:50,
     justifyContent:'center',
     alignItems:'center',

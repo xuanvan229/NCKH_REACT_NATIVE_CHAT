@@ -57,7 +57,7 @@ export default class MyScene extends Component {
   render() {
     return (
               <Image style={styles.background}
-              source={require('./back.jpg')}
+              source={require('./bg.jpg')}
                   >
                     <Text style={styles.welcome}>Welcome</Text>
                   <View style={styles.input}>
@@ -120,7 +120,9 @@ const styles= StyleSheet.create({
   username:{
     width: window.width*0.8,
     borderWidth: 1,
+    borderBottomWidth: 1,
     borderColor:"#fff",
+    borderBottomColor: '#fff',
     color:"#fff",
     borderRadius:window.height*0.05,
     textAlign: 'center',
@@ -139,7 +141,9 @@ const styles= StyleSheet.create({
   loginbutton:{
     width: window.width*0.8,
     height: window.height*0.1,
-    backgroundColor:'#33ff99',
+    backgroundColor:'#E8175D',
+    borderColor: '#fff',
+    // borderWidth: 1,
     borderRadius:50,
     justifyContent:'center',
     alignItems:'center',

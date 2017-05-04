@@ -11,8 +11,9 @@ import { View,
 
  } from 'react-native';
 import * as firebase from 'firebase';
-import { Icon } from 'react-native-elements'
-
+import { Icon,Button } from 'react-native-elements'
+import MaterialsIcon from 'react-native-vector-icons/MaterialIcons';
+import { Kaede,Akira } from 'react-native-textinput-effects';
 const window= Dimensions.get('window');
 var acc=[];
 
@@ -28,6 +29,9 @@ export default class EditProfile extends Component{
       ],
       fullname:'',
       password:'',
+      email:'',
+      address:'',
+      phone:''
     }
   }
   componentDidMount(){
@@ -40,13 +44,19 @@ export default class EditProfile extends Component{
       }
     })
   }
+  _navigatebefore=()=>{
+    this.props.navigator.pop();
+  }
   _onPress(){
     const update={
       id:acc.id,
       imgsrc:acc.imgsrc,
       username:acc.username,
       password:acc.password,
-      fullname:this.state.fullname
+      fullname:this.state.fullname,
+      address:this.state.address,
+      email:this.state.email,
+      phone:this.state.phone
     }
     firebase.database().ref('username/'+update.id).set(update);
     this.props.navigator.push({
@@ -65,9 +75,18 @@ export default class EditProfile extends Component{
     console.log(this.state.fullname);
     return(
       <Image style={styles.background}
-      source={require('./back.jpg')}
+      source={require('./bg.jpg')}
           >
                 <View style={styles.header}>
+                <Button
+                    raised
+                    icon={{name: 'navigate-before', color: '#E8175D'}}
+                    buttonStyle= {styles.navigatebefore}
+                    textStyle={styles.textnavigate}
+                    onPress={this._navigatebefore.bind(this)}
+                    underlayColor='#E8175D'
+                    color='#E8175D'
+                    title='Home' />
                 <TouchableHighlight onPress={this._onPress.bind(this)}>
                 <View>
                 <Icon
@@ -82,21 +101,39 @@ export default class EditProfile extends Component{
                       />
                 </View>
                 <View>
-                      <View style={styles.onechoose}>
-                          <Text style={styles.username}>
-                          Username:
-                          </Text>
-                          <Text style={styles.username2}>
-                          {acc.username}
-                          </Text>
-                      </View>
                       <View style={styles.onechoose1}>
-                          <Text style={styles.username3}>
-                          Fullname:
-                          </Text>
-                          <TextInput placeholder={acc.fullname} style={styles.fullname}
-                          onChangeText={(fullname)=>this.setState({fullname})}>
-                          </TextInput>
+                          <Akira
+                          label={'Full Name'}
+                          inputStyle={{color:'white'}}
+                          onChangeText={(fullname)=>this.setState({fullname})}
+                          // this is used as active and passive border color
+                          borderColor={'#E8175D'}
+                          labelStyle={{ color: '#E8175D' }}
+                        />
+                        <Akira
+                        label={'Email'}
+                        inputStyle={{color:'white'}}
+                        onChangeText={(email)=>this.setState({email})}
+                        // this is used as active and passive border color
+                        borderColor={'#E8175D'}
+                        labelStyle={{ color: '#E8175D' }}
+                      />
+                      <Akira
+                      label={'Address'}
+                      inputStyle={{color:'white'}}
+                      onChangeText={(address)=>this.setState({address})}
+                      // this is used as active and passive border color
+                      borderColor={'#E8175D'}
+                      labelStyle={{ color: '#E8175D' }}
+                    />
+                    <Akira
+                    label={'Phone'}
+                    inputStyle={{color:'white'}}
+                    onChangeText={(phone)=>this.setState({phone})}
+                    // this is used as active and passive border color
+                    borderColor={'#E8175D'}
+                    labelStyle={{ color: '#E8175D' }}
+                  />
                       </View>
                 </View>
           </Image>
@@ -111,6 +148,12 @@ const styles= StyleSheet.create({
     height:window.height*1,
     alignItems:'center',
     backgroundColor:'#fff'
+  },
+  navigatebefore:{
+    width: window.width*0.2,
+    backgroundColor:'rgba(0,0,0,0)',
+    marginLeft:0,
+    shadowColor: 'rgba(0,0,0,0)'
   },
   username:{
     color:"#fff",
@@ -133,24 +176,26 @@ const styles= StyleSheet.create({
 
   },
   onechoose1:{
-    flexDirection:'row',
+    paddingTop: 30,
+    flexDirection:'column',
     width:window.width*0.6,
     backgroundColor: 'rgba(0,0,0,0)',
     justifyContent:'center',
-    height:window.height*0.08,
+    height:window.height*0.5,
   },
   header:{
     width:window.width*1,
     flexDirection:'row',
-    justifyContent:'flex-end',
+    justifyContent:'space-between',
     marginTop:window.height*0.04,
   },
   fullname:{
-    width:window.width*0.3,
-    height:window.height*0.05,
+    width:window.width*0.5,
+    height:window.height*0.1,
     borderWidth:1,
     borderColor: '#fff',
-
+    color:"#fff",
+    borderRadius: window.height*0.05
   },
   name:{
     fontSize:40,

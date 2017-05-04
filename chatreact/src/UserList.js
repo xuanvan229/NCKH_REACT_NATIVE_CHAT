@@ -134,7 +134,7 @@ export default class LISTUSER extends Component{
 
     return(
       <Image style={styles.background}
-      source={require('./back.jpg')} >
+      source={require('./bg.jpg')} >
             <FlatList
               data={this.state.alluser}
               renderItem={this._renderItem}

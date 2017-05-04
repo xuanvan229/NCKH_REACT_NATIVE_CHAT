@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   navbar:{
     flexDirection:'row',
     height:window.height*0.07,
-    backgroundColor:'red',
+    backgroundColor:'#E8175D',
   },
   icon:{
     flex:1,

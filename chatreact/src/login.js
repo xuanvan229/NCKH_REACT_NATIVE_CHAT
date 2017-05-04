@@ -11,6 +11,8 @@ import { View,
    FlatList,
    InteractionManager
  } from 'react-native';
+ import ReactNative from 'react-native'
+ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import * as firebase from 'firebase';
 import { Icon, Button } from 'react-native-elements'
 const window= Dimensions.get('window');
@@ -92,6 +94,9 @@ export default class LOGIN extends Component {
         backgroundColor:'#f1f0f0',
       }
     }
+  }
+  scrollToInput(event, reactNode) {
+    this.refs.scrollView.scrollToFocusedInput(event, reactNode)
   }
   checkstylechat(username){
     if(username==this.props.username){
@@ -183,7 +188,7 @@ export default class LOGIN extends Component {
         keyExtractor={item=>item.id}
       />
       <View style={styles.bottom}>
-          <TextInput style={styles.username} ref={'textInput1'}
+          <TextInput style={styles.username} ref='input1' 
           underlineColorAndroid='#ff8b8b'
           placeholderTextColor='#ff8b8b'
           defaultValue={this.state.text}
@@ -196,6 +201,7 @@ export default class LOGIN extends Component {
             style={styles.submit}
             onPress={this._handlepress.bind(this)}
             size={25} />
+
       </View>
 
       </View>

@@ -37,7 +37,7 @@ export default class LISTUSER extends Component{
 
     }
   }
-  componentDidMount(){
+  componentWillMount(){
     InteractionManager.runAfterInteractions(() => {
       this.setState({renderPlaceholderOnly: false});
     });

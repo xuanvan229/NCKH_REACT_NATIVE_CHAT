@@ -32,7 +32,7 @@ export default class Profile extends Component {
       renderPlaceholderOnly:true
     }
   }
-  componentDidMount(){
+  componentWillMount(){
     InteractionManager.runAfterInteractions(() => {
       this.setState({renderPlaceholderOnly: false});
     });

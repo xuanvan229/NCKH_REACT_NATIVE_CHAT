@@ -103,7 +103,7 @@ export default class EditProfile extends Component{
                 <View>
                       <View style={styles.onechoose1}>
                           <Akira
-                          label={'Full Name'}
+                          label={'Fullname'}
                           inputStyle={{color:'white'}}
                           onChangeText={(fullname)=>this.setState({fullname})}
                           // this is used as active and passive border color

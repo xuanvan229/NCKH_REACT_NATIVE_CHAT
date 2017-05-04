@@ -170,7 +170,6 @@ const styles= StyleSheet.create({
   },
   onechoose:{
     flexDirection:'row',
-    width:window.width*0.6,
     backgroundColor: 'rgba(0,0,0,0)',
     alignItems:'center',
 
@@ -181,7 +180,7 @@ const styles= StyleSheet.create({
     width:window.width*0.6,
     backgroundColor: 'rgba(0,0,0,0)',
     justifyContent:'center',
-    height:window.height*0.5,
+    height:window.height*0.6,
   },
   header:{
     width:window.width*1,
